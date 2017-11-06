@@ -1,0 +1,29 @@
+<!--
+  Generated template for the StampPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>stamp</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <table>
+        <tbody>
+            <tr>
+                <td *ngFor="let item of stampField; i as index">
+                    <p *ngIf="item" class="maru">○</p>
+                    <p *ngIf="!item" class="batsu"></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</ion-content>
