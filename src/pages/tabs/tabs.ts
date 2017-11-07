@@ -1,9 +1,6 @@
-import { StampPage } from './../stamp/stamp';
-import { NavController } from 'ionic-angular';
-import { FirstPage } from './../first/first';
 import { Component } from '@angular/core';
 
-import { AboutPage } from '../about/about';
+import { StampPage } from './../stamp/stamp';
 import { ContactPage } from '../contact/contact';
 
 @Component({
@@ -11,9 +8,8 @@ import { ContactPage } from '../contact/contact';
 })
 export class TabsPage {
 
-  tab1Root = StampPage; 
-  tab2Root = FirstPage;
-  tab3Root = ContactPage;
+  tab1Root = StampPage;
+  tab2Root = ContactPage;
 
   constructor() {
 

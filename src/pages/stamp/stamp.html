@@ -15,15 +15,30 @@
 
 <ion-content padding>
 
-  <table>
-        <tbody>
-            <tr>
-                <td *ngFor="let item of stampField; i as index">
-                    <p *ngIf="item" class="maru">○</p>
-                    <p *ngIf="!item" class="batsu"></p>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="format">
+        <h1>{{stampCard?.title}}スタンプカード</h1>
+
+        <table class="stamp-card">
+            <tbody>
+                <tr>
+                    <td *ngFor="let item of stampCard?.stampDatas; i as index">
+                        <p *ngIf="item.flg" class="maru">OK</p>
+                        <p *ngIf="!item.flg" class="batsu"></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+
+        <div class="format">
+            <p>{{stampCard?.text}}</p>
+        </div>
+
+        <br>
+        <button ion-button outline (click)="stamp()">スタンプ押す！</button>
+        <button ion-button color="light" outline (click)="unstamp()">こっそり消す・・・</button>
+
+    </div>
 
 </ion-content>
