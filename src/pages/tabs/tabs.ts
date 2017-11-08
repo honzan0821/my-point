@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { StampPage } from './../stamp/stamp';
+import { StampListPage } from '../stamp-list/stamp-list';
 import { ContactPage } from '../contact/contact';
 
 @Component({
@@ -8,7 +8,7 @@ import { ContactPage } from '../contact/contact';
 })
 export class TabsPage {
 
-  tab1Root = StampPage;
+  tab1Root = StampListPage;
   tab2Root = ContactPage;
 
   constructor() {

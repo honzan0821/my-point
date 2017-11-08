@@ -10,6 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { FirstPageModule } from './../pages/first/first.module';
 import { StampPageModule } from './../pages/stamp/stamp.module';
+import { StampListPageModule } from './../pages/stamp-list/stamp-list.module';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -26,6 +27,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     FirstPageModule,
+    StampListPageModule,
     StampPageModule
   ],
   bootstrap: [IonicApp],

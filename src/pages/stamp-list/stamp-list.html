@@ -1,0 +1,42 @@
+<!--
+  Generated template for the StampListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>stampList</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <h1>スタンプ一覧</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>登録日</th>
+                <th>タイトル</th>
+                <th>詳細</th>
+                <th>状況</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let stampCard of stampCards; let i = index">
+                <td>{{i + 1}}</td>
+                <td>{{stampCard.registerDate|date:'yyyy/MM/dd'}}</td>
+                <td><a (click)="select(i)">{{stampCard.title}}</a></td>
+                <td>{{stampCard.text}}</td>
+                <td>{{stampCard.stampCount}}個中{{stampCard.stampCurrentCount}}個</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</ion-content>

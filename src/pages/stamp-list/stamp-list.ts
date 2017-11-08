@@ -1,10 +1,11 @@
 import { StampData } from './../../model/stamp-data';
 import { StampCard } from './../../model/stamp-card';
+import { StampPage } from './../stamp/stamp';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the StampPage page.
+ * Generated class for the StampListPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,20 +13,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-stamp',
-  templateUrl: 'stamp.html',
+  selector: 'page-stamp-list',
+  templateUrl: 'stamp-list.html',
 })
-export class StampPage {
+export class StampListPage {
 
-  stampCard: StampCard;
+  stampCards: StampCard[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.stampCard = navParams.get('stampcard');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad StampPage');
-    // this.stampCard = this.fetchStampCard();
+    console.log('ionViewDidLoad StampListPage');
+    this.stampCards = this.fetchStampCard();    
   }
 
   fetchStampCard() {
@@ -49,29 +49,13 @@ export class StampPage {
     stampCard.registerDate = new Date();
     stampCard.title = 'テスト';
     stampCard.text = '２個でミニピザ、4個でパスタをプレゼント！';
-    return stampCard;
+
+    let stampCards:StampCard[] = [];
+    stampCards.push(stampCard);
+    return stampCards;
   }
 
-  stamp() {
-    let target = this.stampCard.stampDatas;
-    for (let i = 0; i < target.length; i++) {
-      if (!target[i].flg) {
-        target[i].flg = true;
-        target[i].registerDate = new Date();
-        return;
-      }
-    }
+  select(no:number){
+    this.navCtrl.push(StampPage,{stampcard:this.stampCards[no]});
   }
-
-  unstamp() {
-    let target = this.stampCard.stampDatas;
-    for (let i = target.length - 1; i >= 0; i--) {
-      if (target[i].flg) {
-        target[i].flg = false;
-        target[i].registerDate = null;
-        return;
-      }
-    }
-  }
-
 }

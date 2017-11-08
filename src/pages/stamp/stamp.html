@@ -21,9 +21,13 @@
         <table class="stamp-card">
             <tbody>
                 <tr>
-                    <td *ngFor="let item of stampCard?.stampDatas; i as index">
-                        <p *ngIf="item.flg" class="maru">OK</p>
-                        <p *ngIf="!item.flg" class="batsu"></p>
+                    <td *ngFor="let stampData of stampCard?.stampDatas; i as index">
+                        <ng-container *ngIf="stampData.flg">
+                            <p class="maru">{{stampData.registerDate|date:'MM/dd'}}</p>
+                        </ng-container>
+                        <ng-container *ngIf="!stampData.flg">
+                            <p class="batsu">{{stampData.keihinText}}</p>
+                        </ng-container>
                     </td>
                 </tr>
             </tbody>
