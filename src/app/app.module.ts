@@ -11,6 +11,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { FirstPageModule } from './../pages/first/first.module';
 import { StampPageModule } from './../pages/stamp/stamp.module';
 import { StampListPageModule } from './../pages/stamp-list/stamp-list.module';
+import { StampCardRegisterPageModule } from './../pages/stamp-card-register/stamp-card-register.module';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -28,7 +29,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     IonicModule.forRoot(MyApp),
     FirstPageModule,
     StampListPageModule,
-    StampPageModule
+    StampPageModule,
+    StampCardRegisterPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
