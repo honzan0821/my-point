@@ -17,16 +17,18 @@
     <ion-list>
         <ion-item>
             <ion-label fixed>タイトル</ion-label>
-            <ion-input type="text" ([ngModel])="stampCard.title"></ion-input>
+            <ion-input type="text" name="stampCard.title" [(ngModel)]="stampCard.title"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label fixed>テキスト</ion-label>
-            <ion-input type="text" ([ngModel])="stampCard.text"></ion-input>
+            <ion-input type="text" name="stampCard.text" [(ngModel)]="stampCard.text"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label fixed>個数</ion-label>
-            <ion-input type="text" ([ngModel])="stampCount"></ion-input>
+            <ion-select name="stampCount" [(ngModel)]="stampCount">
+                <ion-option *ngFor="let item of stampCountCodeList;let i = index" [value]="item">{{item}}</ion-option>
+            </ion-select>
         </ion-item>
     </ion-list>
-    <button ion-button block (click)="register()">登録</button>
+    <button type="submit" ion-button block>登録</button>
 </ion-content>

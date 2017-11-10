@@ -17,15 +17,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class StampCardRegisterPage {
 
-  stampCard: StampCard;
+  stampCard: StampCard = new StampCard([]);
   stampCount: number;
+
+  stampCountCodeList: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StampCardRegisterPage');
-    this.stampCard = new StampCard([]);
   }
 
   register() {
@@ -35,11 +36,27 @@ export class StampCardRegisterPage {
     stampData.flg = true;
     stampData.registerDate = new Date();
     stampDatas.push(stampData);
+    for (let i = 1; i < this.stampCount; i++) {
+      stampData = new StampData();
+      stampData.flg = false;
+      stampData.registerDate = null
+      stampDatas.push(stampData);
+    }
 
-    let stampCard = new StampCard(stampDatas);
-    stampCard.registerDate = new Date();
-    stampCard.title = 'テスト';
-    stampCard.text = '２個でミニピザ、4個でパスタをプレゼント！';
+    this.stampCard.stampDatas = stampDatas;
+    this.stampCard.stampCount = this.stampCount;
+    this.stampCard.title = this.stampCard.title;
+    this.stampCard.text = this.stampCard.text;
+
+    let stampCards = JSON.parse(localStorage.getItem('stampcards')) as StampCard[];
+    if (!stampCards) {
+      stampCards = [];
+    }
+    stampCards.push(this.stampCard);
+    localStorage.setItem('stampcards', JSON.stringify(stampCards));
+    
+    this.stampCard = new StampCard([]);
+
   }
 
 }

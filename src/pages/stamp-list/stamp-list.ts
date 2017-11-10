@@ -25,37 +25,39 @@ export class StampListPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StampListPage');
-    this.stampCards = this.fetchStampCard();    
+    this.stampCards = this.fetchStampCard();
   }
 
   fetchStampCard() {
-    let stampDatas = [];
 
-    let stampData: StampData;
-    stampData = new StampData();
-    stampData.flg = true;
-    stampData.registerDate = new Date();
-    stampDatas.push(stampData);
-    stampData = new StampData();
-    stampData.keihinText = "ミニパスタ";
-    stampDatas.push(stampData);
-    stampData = new StampData();
-    stampDatas.push(stampData);
-    stampData = new StampData();
-    stampData.keihinText = "ピザ";
-    stampDatas.push(stampData);
+    let stampCards = JSON.parse(localStorage.getItem('stampcards')) as StampCard[];
+    
+    // let stampDatas = [];
+    // let stampData: StampData;
+    // stampData = new StampData();
+    // stampData.flg = true;
+    // stampData.registerDate = new Date();
+    // stampDatas.push(stampData);
+    // stampData = new StampData();
+    // stampData.keihinText = "ミニパスタ";
+    // stampDatas.push(stampData);
+    // stampData = new StampData();
+    // stampDatas.push(stampData);
+    // stampData = new StampData();
+    // stampData.keihinText = "ピザ";
+    // stampDatas.push(stampData);
 
-    let stampCard = new StampCard(stampDatas);
-    stampCard.registerDate = new Date();
-    stampCard.title = 'テスト';
-    stampCard.text = '２個でミニピザ、4個でパスタをプレゼント！';
+    // let stampCard = new StampCard(stampDatas);
+    // stampCard.registerDate = new Date();
+    // stampCard.title = 'テスト';
+    // stampCard.text = '２個でミニピザ、4個でパスタをプレゼント！';
 
-    let stampCards:StampCard[] = [];
-    stampCards.push(stampCard);
+    // let stampCards: StampCard[] = [];
+    // stampCards.push(stampCard);
     return stampCards;
   }
 
-  select(no:number){
-    this.navCtrl.push(StampPage,{stampcard:this.stampCards[no]});
+  select(no: number) {
+    this.navCtrl.push(StampPage, { stampcard: this.stampCards[no] });
   }
 }

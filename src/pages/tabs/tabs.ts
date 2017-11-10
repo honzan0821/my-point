@@ -1,3 +1,4 @@
+import { StampCardRegisterPage } from './../stamp-card-register/stamp-card-register';
 import { Component } from '@angular/core';
 
 import { StampListPage } from '../stamp-list/stamp-list';
@@ -9,8 +10,9 @@ import { ContactPage } from '../contact/contact';
 export class TabsPage {
 
   tab1Root = StampListPage;
-  tab2Root = ContactPage;
-
+  tab2Root = StampCardRegisterPage;
+  tab3Root = ContactPage;
+  
   constructor() {
 
   }
