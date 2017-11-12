@@ -25,10 +25,47 @@ export class StampPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StampPage');
-    // this.stampCard = this.fetchStampCard();
   }
 
-  fetchStampCard() {
+  ionViewWillLeave() {
+    this.save();
+  }
+
+  save() {
+    let stampCards = JSON.parse(localStorage.getItem('stampcards')) as StampCard[];
+    for (let i = 0; i < stampCards.length; i++) {
+      if (stampCards[i].registerDate === this.stampCard.registerDate) {
+        stampCards[i] = this.stampCard;
+      }
+    }
+    localStorage.setItem('stampcards', JSON.stringify(stampCards));
+  }
+
+  stamp() {
+    let target = this.stampCard.stampDatas;
+    this.stampCard.stampCurrentCount = this.stampCard.stampCurrentCount + 1;
+    for (let i = 0; i < target.length; i++) {
+      if (!target[i].flg) {
+        target[i].flg = true;
+        target[i].registerDate = new Date();
+        return;
+      }
+    }
+  }
+
+  unstamp() {
+    let target = this.stampCard.stampDatas;
+    this.stampCard.stampCurrentCount = this.stampCard.stampCurrentCount - 1;
+    for (let i = target.length - 1; i >= 0; i--) {
+      if (target[i].flg) {
+        target[i].flg = false;
+        target[i].registerDate = null;
+        return;
+      }
+    }
+  }
+
+  test() {
     let stampDatas = [];
 
     let stampData: StampData;
@@ -51,27 +88,4 @@ export class StampPage {
     stampCard.text = '２個でミニピザ、4個でパスタをプレゼント！';
     return stampCard;
   }
-
-  stamp() {
-    let target = this.stampCard.stampDatas;
-    for (let i = 0; i < target.length; i++) {
-      if (!target[i].flg) {
-        target[i].flg = true;
-        target[i].registerDate = new Date();
-        return;
-      }
-    }
-  }
-
-  unstamp() {
-    let target = this.stampCard.stampDatas;
-    for (let i = target.length - 1; i >= 0; i--) {
-      if (target[i].flg) {
-        target[i].flg = false;
-        target[i].registerDate = null;
-        return;
-      }
-    }
-  }
-
 }
