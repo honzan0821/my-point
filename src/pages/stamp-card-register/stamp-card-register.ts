@@ -23,7 +23,6 @@ export class StampCardRegisterPage {
   private registerFormGroup: FormGroup;
 
   stampCard: StampCard;
-  stampCount: number;
 
   stampCountCodeList: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -56,7 +55,7 @@ export class StampCardRegisterPage {
     stampData.flg = true;
     stampData.registerDate = new Date();
     stampDatas.push(stampData);
-    for (let i = 1; i < this.stampCount; i++) {
+    for (let i = 1; i < this.stampCard.stampCount; i++) {
       stampData = new StampData();
       stampData.flg = false;
       stampData.registerDate = null
@@ -66,9 +65,6 @@ export class StampCardRegisterPage {
     // stampCardを作成してローカルストレージに追加。
     // TODO ionicのストレージに変えたい。
     this.stampCard.stampDatas = stampDatas;
-    this.stampCard.stampCount = this.stampCount;
-    this.stampCard.title = this.stampCard.title;
-    this.stampCard.text = this.stampCard.text;
     this.stampCard.registerDate = new Date();
 
     let stampCards = JSON.parse(localStorage.getItem('stampcards')) as StampCard[];
