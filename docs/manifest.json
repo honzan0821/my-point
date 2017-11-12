@@ -1,6 +1,6 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
+  "name": "My Stamp",
+  "short_name": "My Stamp",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
