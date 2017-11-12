@@ -7,28 +7,29 @@
 <ion-header>
 
     <ion-navbar>
-        <ion-title>stampCardRegister</ion-title>
+        <ion-title>スタンプカード登録</ion-title>
     </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
-    <ion-list>
-        <ion-item>
-            <ion-label fixed>タイトル</ion-label>
-            <ion-input type="text" name="stampCard.title" [(ngModel)]="stampCard.title"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label fixed>テキスト</ion-label>
-            <ion-input type="text" name="stampCard.text" [(ngModel)]="stampCard.text"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label fixed>個数</ion-label>
-            <ion-select name="stampCount" [(ngModel)]="stampCount">
-                <ion-option *ngFor="let item of stampCountCodeList;let i = index" [value]="item">{{item}}</ion-option>
-            </ion-select>
-        </ion-item>
-    </ion-list>
-    <button type="submit" ion-button block>登録</button>
+    <form [formGroup]="registerFormGroup">
+        <ion-list>
+            <ion-item>
+                <ion-label fixed>タイトル</ion-label>
+                <ion-input type="text" [(ngModel)]="stampCard.title" formControlName="title"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label fixed>テキスト</ion-label>
+                <ion-input type="text" [(ngModel)]="stampCard.text" formControlName="text"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label fixed>個数</ion-label>
+                <ion-select [(ngModel)]="stampCard.stampCount" formControlName="stampCount">
+                    <ion-option *ngFor="let item of stampCountCodeList;let i = index" [value]="item">{{item}}</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-list>
+        <button ion-button block [disabled]="registerFormGroup.invalid" (click)="register()" tappable>登録</button>
+    </form>
 </ion-content>

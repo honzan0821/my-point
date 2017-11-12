@@ -12,6 +12,10 @@ export class StampCard {
   constructor(private stamps: StampData[]) {
     this.stampDatas = stamps;
     this.stampCount = stamps.length;
+    //　ionicだと値で初期化しておかないと変更検知してもらえないようだ。。。
     this.stampCurrentCount = 1;
+    this.stampCount = 0;
+    this.title = '';
+    this.text = '';
   }
 }

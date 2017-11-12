@@ -7,7 +7,7 @@
 <ion-header>
 
     <ion-navbar>
-        <ion-title>stampList</ion-title>
+        <ion-title>スタンプカード一覧</ion-title>
     </ion-navbar>
 
 </ion-header>
@@ -15,28 +15,27 @@
 
 <ion-content padding>
 
-    <h1>スタンプ一覧</h1>
+    <ion-card *ngFor="let stampCard of stampCards; let i = index" (click)="select(i)" tappable>
 
-    <table>
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>登録日</th>
-                <th>タイトル</th>
-                <th>詳細</th>
-                <th>状況</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let stampCard of stampCards; let i = index">
-                <td>{{i + 1}}</td>
-                <td>{{stampCard.registerDate|date:'yyyy/MM/dd'}}</td>
-                <td><a (click)="select(i)">{{stampCard.title}}</a></td>
-                <td>{{stampCard.text}}</td>
-                <td>{{stampCard.stampCount}}個中{{stampCard.stampCurrentCount}}個</td>
-            </tr>
-        </tbody>
-    </table>
-
+        <ion-card-content>
+            <ion-badge item-start>No.{{i + 1}}</ion-badge>
+            <ion-card-title>{{stampCard.title}}スタンプカード</ion-card-title>
+            <p>{{stampCard.text}}</p>
+        </ion-card-content>
+        <ion-row>
+            <ion-col>
+                <button ion-button icon-left clear small>
+              <ion-icon name="apps"></ion-icon>
+              <div>{{stampCard.stampCount}}個中{{stampCard.stampCurrentCount}}個おしてあるよ！</div>
+            </button>
+            </ion-col>
+            <ion-col (click)="delete(i);$event.stopPropagation()" tappable>
+                <button ion-button icon-left clear small>
+              <ion-icon name="apps"></ion-icon>
+              <div>スタンプカードを削除する！</div>
+            </button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
 
 </ion-content>
