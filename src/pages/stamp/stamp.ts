@@ -43,11 +43,11 @@ export class StampPage {
 
   stamp() {
     let target = this.stampCard.stampDatas;
-    this.stampCard.stampCurrentCount = this.stampCard.stampCurrentCount + 1;
     for (let i = 0; i < target.length; i++) {
       if (!target[i].flg) {
         target[i].flg = true;
         target[i].registerDate = new Date();
+        this.stampCard.stampCurrentCount = this.stampCard.stampCurrentCount + 1;
         return;
       }
     }
@@ -55,11 +55,11 @@ export class StampPage {
 
   unstamp() {
     let target = this.stampCard.stampDatas;
-    this.stampCard.stampCurrentCount = this.stampCard.stampCurrentCount - 1;
     for (let i = target.length - 1; i >= 0; i--) {
       if (target[i].flg) {
         target[i].flg = false;
         target[i].registerDate = null;
+        this.stampCard.stampCurrentCount = this.stampCard.stampCurrentCount - 1;
         return;
       }
     }
